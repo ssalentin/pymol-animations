@@ -5,6 +5,7 @@ Tutorials for producing nice animations (movies) and images in PyMOL
 
 Tutorials
 ---------
-*BASICS*
-[How to setup PyMOL for movies](tutorials/basic/01-moviesetup.py)
-[How to use the concept of scenes for your animation](tutorials/basic/02-scenes.py)
+# BASICS
+
+1. [How to setup PyMOL for movies](tutorials/basics/01-moviesetup.py)
+2. [How to use the concept of scenes for your animation](tutorials/basics/02-scenes.py)
