@@ -16,7 +16,7 @@ def setup_pymol():
     cmd.set('matrix_mode', 1)
     cmd.set('movie_panel', 1)
     # Configure quality settings
-    cmd.mset("1 x1000")
+    cmd.mset("1 x500")
     cmd.set('ray_trace_frames', 1)
     cmd.viewport(800, 800)
 

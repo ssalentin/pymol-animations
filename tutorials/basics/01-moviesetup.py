@@ -17,7 +17,7 @@ cmd.set('matrix_mode', 1)  # This sets up a mode needed for animations.
 cmd.set('movie_panel', 1)  # This setting shows a slider to interactively move between frames
 
 # Finally, we have to think about the length and quality of our animation
-cmd.mset("1 x1000")  # How many frames do we need?. 1000 frames is enough for a 40 seconds video with 25 frames/second
+cmd.mset("1 x500")  # How many frames do we need?. 500 frames are enough for a 20 seconds video with 25 frames/second
 cmd.set('ray_trace_frames', 1)  # Should the frames be ray-traced? If yes, rendering will take longer, but look nicer.
 cmd.viewport(800, 800)  # Choose the desired resolution for the movie here (in pixels).
 
