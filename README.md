@@ -16,3 +16,8 @@ Tutorials for producing nice animations (movies) and images in PyMOL
 4. [How to animate your scenes](tutorials/basics/04-animation.py)
 5. [How to add extra camera movements to your animation](tutorials/basics/05-camera-movements.py)
 6. [How to pretty up your animation and create a video file](tutorials/basics/06-finish.py)
+
+
+## Special Topics
+
+* [Workaround for producing images in GUI-less command-line mode](special-topics/workaround-png.py)
