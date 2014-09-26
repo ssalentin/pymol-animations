@@ -1,7 +1,7 @@
 __author__ = 'sebastians'
 
-# PyMOL Animation Tutorials -- 05 - Camera Movements
-# This tutorial will show you how to add more camera movements to your animation
+# PyMOL Animation Tutorials -- 06 - Finish
+# This tutorial will show you how to pretty up your animation and output a movie
 
 # Import all necessary modules
 import pymol
@@ -58,30 +58,51 @@ def scenes_to_frames():
     cmd.mview('store', 250)
     cmd.mview('store', 400)
 
+
+def additional_camera():
+    # Add a rotation to the global view
+    cmd.scene('001', animate=0)
+    cmd.turn('y', -40)
+    cmd.mview('store', 80)
+    cmd.turn('y', 40)
+    cmd.mview('store', 140)
+    # Add panning to the close-up
+    cmd.scene('002', animate=0)
+    cmd.move('x', 5)
+    cmd.mview('store', 320)
+
+
 setup_pymol()
 cmd.load('../../input-files/Cathepsin.pdb')  # Load the PDB file
 initial_representations()
 set_up_scenes()
 scenes_to_frames()
-
-# Apart from moving between scenes, independent camera movements can be added to the animation
-# One of them, the zoom (cmd.zoom) was already used
-# Two other movements are rotation (cmd.turn) and panning (cmd.move)
-# Let's add a rotation to the global view and a panning to the close-up to make them more interesting
-
-cmd.scene('001', animate=0)  # Select the first scene again (we need the camera view as a starting point)
-cmd.turn('y', -40)  # Turn the camera 40 degrees left around the y-axis
-cmd.mview('store', 80)  # Store the changed view/assign it to frame 60
-cmd.turn('y', 40)  # Turn the camera 40 degrees in the other direction around the y-axis
-cmd.mview('store', 140)  # Assign the view to frame 120
-
-cmd.scene('002', animate=0)  # Select the second scene
-cmd.move('x', 5)  # Move along the x-axis
-cmd.mview('store', 320)  # Assign the view to frame 320
+additional_camera()
 
 # Rewind and turn off ray-tracing
 cmd.rewind()  # Rewind the movie to frame 1
-cmd.set('ray_trace_frames', 0)  # Turn ray-tracing for frames off
 
-# Running the script, you should now see the additional camera movements additional to the scene transitions
-# Note that there are also transitions back to original scene 001 and scene 002 views after the movements
+#cmd.save('/tmp/movie_session.pse')  # It's also a good idea to save the session
+cmd.set('ray_trace_frames', 1)  # Turn ray-tracing for frames on this time to get a nice output
+
+#cmd.save('/tmp/movie_session.pse')  # It's also
+# Choose a nice-fitting colorset for your molecules and general setup.
+# For a single complex, one good choice is a light green for the protein, orange for the ligand and coloring by atoms.
+cmd.color('palegreen', 'Cathepsin')  # Light green protein
+cmd.color('tv_orange', 'ligand')  # Orange ligand
+cmd.util.cnc('ligand')  # Color ligand atoms by type
+cmd.set('bg_rgb', 'white')  # A white background is especially suited for presentations
+
+# Render the frames into png images with the next command
+# The output folder here would be /tmp and the prefix for the png files 'movie'
+# The png files are called movie0001.png, movie0002.png, etc.
+#cmd.mpng('/tmp/movie')  # Uncomment this to render the movie when running the script
+
+# Before you can watch the movie, you need to stick together the png files into a movie
+# This can be done with free tools like ffmpeg
+# To create a movie from the png files in this tutorial, tun the following command (on Linux):
+# ffmpeg -f image2 -i movie%04d.png -r 25 -sameq movie.mp4
+# This will create a movie file called movie.mp4 with 25 frames per second and the same quality as the images
+
+# Now it's time to get some popcorn! :)
+
