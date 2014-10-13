@@ -75,6 +75,14 @@ def additional_camera():
 setup_pymol()
 cmd.load('../../input-files/Cathepsin.pdb')  # Load the PDB file
 initial_representations()
+
+# Choose a nice-fitting colorset for your molecules and general setup.
+# For a single complex, one good choice is a light green for the protein, orange for the ligand and coloring by atoms.
+cmd.color('palegreen', 'Cathepsin')  # Light green protein
+cmd.color('tv_orange', 'ligand')  # Orange ligand
+cmd.util.cnc('ligand')  # Color ligand atoms by type
+cmd.set('bg_rgb', 'white')  # A white background is especially suited for presentations
+
 set_up_scenes()
 scenes_to_frames()
 additional_camera()
@@ -85,13 +93,8 @@ cmd.rewind()  # Rewind the movie to frame 1
 #cmd.save('/tmp/movie_session.pse')  # It's also a good idea to save the session
 cmd.set('ray_trace_frames', 1)  # Turn ray-tracing for frames on this time to get a nice output
 
-#cmd.save('/tmp/movie_session.pse')  # It's also
-# Choose a nice-fitting colorset for your molecules and general setup.
-# For a single complex, one good choice is a light green for the protein, orange for the ligand and coloring by atoms.
-cmd.color('palegreen', 'Cathepsin')  # Light green protein
-cmd.color('tv_orange', 'ligand')  # Orange ligand
-cmd.util.cnc('ligand')  # Color ligand atoms by type
-cmd.set('bg_rgb', 'white')  # A white background is especially suited for presentations
+
+
 
 # Render the frames into png images with the next command
 # The output folder here would be /tmp and the prefix for the png files 'movie'
