@@ -104,7 +104,7 @@ cmd.set('ray_trace_frames', 1)  # Turn ray-tracing for frames on this time to ge
 # Before you can watch the movie, you need to stick together the png files into a movie
 # This can be done with free tools like ffmpeg
 # To create a movie from the png files in this tutorial, tun the following command (on Linux):
-# ffmpeg -f image2 -i movie%04d.png -r 25 -sameq movie.mp4
+# avconv -f image2 -i movie%04d.png -r 25 movie.mp4
 # This will create a movie file called movie.mp4 with 25 frames per second and the same quality as the images
 
 # Now it's time to get some popcorn! :)
